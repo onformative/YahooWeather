@@ -11,10 +11,10 @@ import processing.core.PApplet;
 import processing.data.XML;
 
 /**
- * YahooWeatherThread.java
- * last update: 05.10.2012
+ * YahooWeatherThread.java last update: 05.10.2012
+ * 
  * @author marcel schwittlick
- *
+ * 
  */
 public class YahooWeatherThread extends Thread {
 
@@ -37,7 +37,8 @@ public class YahooWeatherThread extends Thread {
 
   public void start() {
     running = true;
-    System.out.println("YahooWeather thread started. Update frequency: "+updateIntervallMilis/1000+"s");
+    System.out.println("YahooWeather thread started. Update frequency: " + updateIntervallMilis
+        / 1000 + "s");
     setMainXML();
     super.start();
   }
@@ -60,19 +61,9 @@ public class YahooWeatherThread extends Thread {
   }
 
   private void setMainXML() {
-    try {
-      mainXML = new XML(parent, URL);
-      System.out.println("Weather Data updated!");
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (ParserConfigurationException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (SAXException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    // mainXML = new XML(parent, URL);
+    mainXML = parent.loadXML(URL);
+    System.out.println("Weather Data updated!");
     lastUpdate = new Date();
   }
 
@@ -87,12 +78,12 @@ public class YahooWeatherThread extends Thread {
   public void setURL(String URL) {
     this.URL = URL;
   }
-  
-  public String getURL(){
+
+  public String getURL() {
     return this.URL;
   }
-  
-  public void updateThread(){
+
+  public void updateThread() {
     setMainXML();
   }
 }

@@ -1,11 +1,6 @@
 package com.onformative.yahooweather.processing15;
 
-import java.io.IOException;
 import java.util.Date;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
 
 import processing.core.PApplet;
 import processing.xml.XMLElement;
